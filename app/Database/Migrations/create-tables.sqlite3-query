@@ -1,0 +1,20 @@
+-- database: ../../../writable/database.sqlite3
+PRAGMA foreign_keys = ON;
+
+CREATE TABLE students (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    lrn TEXT NOT NULL UNIQUE,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    middle_name TEXT NOT NULL,
+    jr_high_school TEXT NOT NULL
+);
+
+CREATE TABLE grades (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    student_id INTEGER,
+    grade_level INTEGER,
+    average_grade REAL,
+    FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE
+);
+
